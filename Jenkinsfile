@@ -1,6 +1,10 @@
 pipeline {
     agent any
-    stages {
+     environment {
+        AWS_CREDENTIALS = credentials('JENKINS-AWS') // ID for configured AWS credentials
+    }
+
+	stages {
         stage('Checkout') {
             steps {
                 git 'https://github.com/oodunsi1/ci-cd-1.git' // Update with the actual GitHub repo URL
