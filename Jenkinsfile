@@ -16,6 +16,7 @@ pipeline {
                     sh '''
                         echo "Listing all S3 buckets in the AWS account:"
                         aws s3 ls
+                        terraform init
                     '''
                 }
             }
