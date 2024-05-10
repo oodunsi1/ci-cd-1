@@ -17,21 +17,12 @@ pipeline {
                         echo "Listing all S3 buckets in the AWS account:"
                         aws s3 ls
                         terraform init
+                        terraform apply -var-file="dev.tfvars"
                     '''
                 }
             }
         }
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan -out=tfplan'
-            }
-        }
-        stage('Terraform Apply') {
-            steps {
-                input message: 'Do you want to apply the plan?', ok: 'Apply'
-                sh 'terraform apply tfplan'
-            }
-        }
+
     }
 }
 
