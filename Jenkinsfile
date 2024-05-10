@@ -17,7 +17,8 @@ pipeline {
                         echo "Listing all S3 buckets in the AWS account:"
                         aws s3 ls
                         terraform init
-                        terraform apply -var-file="dev.tfvars"
+                        terraform apply -var-file="dev.tfvars" -auto-approve
+
                     '''
                 }
             }
