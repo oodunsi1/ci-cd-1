@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = 'us-east-1'  // Set this to your AWS region
-        AWS_CREDENTIALS = credentials('JENKINS-AWS')  // ID for configured AWS credentials in Jenkins
+        AWS_CREDENTIALS = credentials('aws')  // ID for configured AWS credentials in Jenkins
     }
 
     stages {
@@ -11,7 +11,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding', 
-                    credentialsId: 'JENKINS-AWS'  // Use your AWS credentials ID
+                    credentialsId: 'aws'  // Use your AWS credentials ID
                 ]]) {
                     sh '''
                         echo "Listing all S3 buckets in the AWS account:"
